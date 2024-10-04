@@ -7,14 +7,35 @@ function sum(array) {
   return sum;
 }
 
-let res = sum(null);
-console.log(res);
+
+
+try{
+  let res = sum(null);
+  console.log(res);
+} catch (error) {
+  if (error instanceof TypeError ){
+    console.error(error.name + ': ' + error.message + " Loser...");
+  }
+}
 
 // 2.
 // tests
+// sayName("Alex");
+// sayName(1);
+function sayName(name){
+  if (name !== "string"){
+    throw Error("Invalid name! Must be a string! \n Loser...");
+  } else {
+    console.log(name);
+  }
+}
+
+try{
 sayName("Alex");
 sayName(1);
-// Your code here
+} catch (error){
+  console.error(error.message);
+}
 
 // 3.
 function greet(greeting) {
@@ -23,4 +44,12 @@ function greet(greeting) {
   }
 
   console.log(greeting);
+}
+
+try {
+  greet(null);
+} catch (error) {
+  console.error(error.message);
+} finally {
+  console.log("Hello World!")
 }
